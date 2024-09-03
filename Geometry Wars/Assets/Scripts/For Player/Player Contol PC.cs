@@ -25,16 +25,11 @@ public class PlayerContolPC : MonoBehaviour
     {
         controller = GetComponent<CharacterController>(); 
         checkGround = GameObject.Find("CheckGround").transform;
-        
-
     }
 
-
-    // Update is called once per frame 
     void Update()
     {
         onGround = Physics.CheckSphere(checkGround.position,groundDistance,groundMask);
-        print(onGround);
 
         if(onGround && velocity.y <= 0)
         {
