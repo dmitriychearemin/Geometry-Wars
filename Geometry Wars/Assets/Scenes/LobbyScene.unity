@@ -826,6 +826,58 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
+      propertyPath: dashTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
+      propertyPath: dashSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
+      propertyPath: dashCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
+      propertyPath: dashCurve.m_Curve.Array.data[0].time
+      value: 0.018722534
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
+      propertyPath: dashCurve.m_Curve.Array.data[1].time
+      value: 0.5311967
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
+      propertyPath: dashCurve.m_Curve.Array.data[0].value
+      value: 0.9989357
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
+      propertyPath: dashCurve.m_Curve.Array.data[1].value
+      value: -0.0008865502
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
+      propertyPath: dashCurve.m_Curve.Array.data[0].inSlope
+      value: -2.5984242
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
+      propertyPath: dashCurve.m_Curve.Array.data[1].inSlope
+      value: -0.21795636
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
+      propertyPath: dashCurve.m_Curve.Array.data[0].outSlope
+      value: -2.5984242
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
+      propertyPath: dashCurve.m_Curve.Array.data[1].inWeight
+      value: 0.09554955
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
+      propertyPath: dashCurve.m_Curve.Array.data[1].outSlope
+      value: -0.21795636
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
+      propertyPath: dashCurve.m_Curve.Array.data[0].outWeight
+      value: 0.0431939
+      objectReference: {fileID: 0}
     - target: {fileID: 7755268958739243165, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
       propertyPath: m_Name
       value: Player

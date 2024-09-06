@@ -25,8 +25,8 @@ public class ForBarHPStamina : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HPBar.fillAmount = player.getHP() / player.getMaxHP();
-        StaminaBar.fillAmount= player.getStamina() / player.getStamina();
+        HPBar.fillAmount = player.getCurHP() / player.getMaxHP();
+        StaminaBar.fillAmount= player.getCurStamina() / player.getMaxStamina();
 
     }
 }

@@ -37,12 +37,12 @@ public class PlayersCharacteristics : MonoBehaviour
         
     }
 
-    public float getHP()
+    public float getCurHP()
     {
         return curHP;
     }
 
-    public float getStamina()
+    public float getCurStamina()
     {
         return curStamina;
     }

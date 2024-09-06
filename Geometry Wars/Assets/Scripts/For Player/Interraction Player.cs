@@ -18,16 +18,29 @@ public class InterractionPlayer : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            TakeDamage();
+            TakeDamage(50);
         }
     }
 
-    void TakeDamage()
+    public bool TakeDamage(float minus)
     {
-        playersCharacteristics.setCurHp(playersCharacteristics.getHP() - 50);
-
-
+        if (playersCharacteristics.getCurHP()>= minus)
+        {
+            playersCharacteristics.setCurHp(playersCharacteristics.getCurHP() - minus);
+            return true;
+        }
+        return false;
+        
     }
 
+    public bool DecreaseStamina(float minus)
+    {
+        if (playersCharacteristics.getCurStamina() >= minus)
+        {
+            playersCharacteristics.setCurStamina(playersCharacteristics.getCurStamina() - minus);
+            return true;
+        }
+        return false;
+    }
 
 }
