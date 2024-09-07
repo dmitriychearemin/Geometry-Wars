@@ -18,7 +18,7 @@ public class PlayerContolPC : MonoBehaviour
 
     private bool onGround = true;
     bool isDashing = false;
-
+    bool isRegeniratingStamina = true;
 
     private Vector3 velocity;
     Vector3 movement;
@@ -38,13 +38,16 @@ public class PlayerContolPC : MonoBehaviour
 
     void Update()
     {
-        //dash = 0;
+        if(onGround && !isDashing && !playerInteraction.CheckOnFullStamina())
+        {
+            playerInteraction.RegeneratingStamina(); 
+        }
+
         onGround = Physics.CheckSphere(checkGround.position,groundDistance,groundMask);
 
         if(onGround && velocity.y <= 0)
         {
             velocity.y = -1;
-            
         }
 
         float horizontal = Input.GetAxis("Horizontal");
@@ -52,31 +55,29 @@ public class PlayerContolPC : MonoBehaviour
 
         if (Input.GetButtonDown("Dash"))
         {
-            if (playerInteraction.DecreaseStamina(8))
+            if (playerInteraction.DecreaseStamina(70))
             {
-                print(1);
+                isRegeniratingStamina = false;
                 StartCoroutine(Dash());
             }
-            // dash = HighJump*20;
+           
                 
         }
 
         movement = transform.right * horizontal + transform.forward * vertical;
-
         controller.Move((movement * playerSpeed *  Time.deltaTime));
-
         velocity.y += gravity*2 * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-
         if (Input.GetButtonDown("Jump") && onGround == true)
         {
-            if(playerInteraction.DecreaseStamina(60))
-                velocity.y += HighJump;  
+            if (playerInteraction.DecreaseStamina(60))
+            {
+                isRegeniratingStamina = false;
+                velocity.y += HighJump;
+            }
+                
         }
-
-       
-
     }
 
     private IEnumerator Dash()
@@ -96,5 +97,7 @@ public class PlayerContolPC : MonoBehaviour
         isDashing = false;
         yield break;
     }
+
+    
 
 }

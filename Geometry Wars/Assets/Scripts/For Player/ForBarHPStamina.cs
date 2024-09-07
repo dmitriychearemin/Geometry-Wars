@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,8 @@ public class ForBarHPStamina : MonoBehaviour
     [SerializeField] PlayersCharacteristics player;
     [SerializeField] Image HPBar;
     [SerializeField] Image StaminaBar;
+    [SerializeField] TextMeshPro textHP;
+    [SerializeField] TextMeshPro textStamina;
 
     void Start()
     {
@@ -27,6 +30,8 @@ public class ForBarHPStamina : MonoBehaviour
     {
         HPBar.fillAmount = player.getCurHP() / player.getMaxHP();
         StaminaBar.fillAmount= player.getCurStamina() / player.getMaxStamina();
-
+        
+        textHP.text = Mathf.CeilToInt(player.getCurHP()).ToString();
+        textStamina.text = Mathf.CeilToInt(player.getCurStamina()).ToString();
     }
 }

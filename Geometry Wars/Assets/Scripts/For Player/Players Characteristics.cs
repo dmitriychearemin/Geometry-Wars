@@ -9,8 +9,8 @@ public class PlayersCharacteristics : MonoBehaviour
     float HitPoints = 100;
     float Stamina = 100;
 
-    float curHP;
-    float curStamina;
+    [SerializeField]float curHP;
+    [SerializeField] float curStamina;
 
     float CurrentEXP = 0;
     float NeedExp;
@@ -18,11 +18,11 @@ public class PlayersCharacteristics : MonoBehaviour
     float DamageBody = 0; //в процентах
     float Defence = 0; //в процентах
 
-    float maxHitpoints = 300;
-    float maxStamina = 300;
-    float maxDamageBody = 30; //в процентах
-    float maxDefence = 40;
-    int   maxLevel = 100;
+    float maxPotencialHitpoints = 300;
+    float maxPotencialStamina = 300;
+    float maxPotencialDamageBody = 30; //в процентах
+    float maxPotencialDefence = 40;
+    int   maxPotencialLevel = 100;
 
     // Start is called before the first frame update
     void Start()

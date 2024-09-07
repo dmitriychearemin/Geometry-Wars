@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,6 +42,29 @@ public class InterractionPlayer : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public bool CheckOnFullStamina()
+    {
+        if(playersCharacteristics.getCurStamina() == playersCharacteristics.getMaxStamina())
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void RegeneratingStamina()
+    {
+               
+        playersCharacteristics.setCurStamina(playersCharacteristics.getCurStamina() +
+        playersCharacteristics.getMaxStamina() / 4 * Time.deltaTime);
+        if (playersCharacteristics.getCurStamina() > playersCharacteristics.getMaxStamina())
+            {
+                playersCharacteristics.setCurStamina(playersCharacteristics.getMaxStamina());
+            }
+
+           
+           
     }
 
 }
