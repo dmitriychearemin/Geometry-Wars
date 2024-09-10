@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ForCrossHair : MonoBehaviour
 {
 
-    float actionRange = 3; // будет передаваться дистанция досягаемости оружия до противника
+    float actionRange = 10; // будет передаваться дистанция досягаемости оружия до противника
 
     bool ActiveCrosshair = false;
     float activeAlphaCrosshair = 1;

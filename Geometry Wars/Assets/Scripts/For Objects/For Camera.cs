@@ -15,7 +15,8 @@ public class ForCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray ray = new Ray(camera.transform.position, camera.transform.forward);
+
+        /*Ray ray = new Ray(camera.transform.position, camera.transform.forward);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
@@ -29,10 +30,12 @@ public class ForCamera : MonoBehaviour
             {
                 hit.collider.GetComponent<MeshRenderer>().enabled = true;
             }
-        }
-     
+        }*/
+
 
     }
+
+
 
 
 }

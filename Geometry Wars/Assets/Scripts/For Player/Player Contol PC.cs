@@ -38,46 +38,7 @@ public class PlayerContolPC : MonoBehaviour
 
     void Update()
     {
-        if(onGround && !isDashing && !playerInteraction.CheckOnFullStamina())
-        {
-            playerInteraction.RegeneratingStamina(); 
-        }
-
-        onGround = Physics.CheckSphere(checkGround.position,groundDistance,groundMask);
-
-        if(onGround && velocity.y <= 0)
-        {
-            velocity.y = -1;
-        }
-
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        if (Input.GetButtonDown("Dash"))
-        {
-            if (playerInteraction.DecreaseStamina(70))
-            {
-                isRegeniratingStamina = false;
-                StartCoroutine(Dash());
-            }
-           
-                
-        }
-
-        movement = transform.right * horizontal + transform.forward * vertical;
-        controller.Move((movement * playerSpeed *  Time.deltaTime));
-        velocity.y += gravity*2 * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
-
-        if (Input.GetButtonDown("Jump") && onGround == true)
-        {
-            if (playerInteraction.DecreaseStamina(60))
-            {
-                isRegeniratingStamina = false;
-                velocity.y += HighJump;
-            }
-                
-        }
+        Actions();
     }
 
     private IEnumerator Dash()
@@ -98,6 +59,49 @@ public class PlayerContolPC : MonoBehaviour
         yield break;
     }
 
-    
+    void Actions()
+    {
+        if (onGround && !isDashing && !playerInteraction.CheckOnFullStamina())
+        {
+            playerInteraction.RegeneratingStamina();
+        }
+
+        onGround = Physics.CheckSphere(checkGround.position, groundDistance, groundMask);
+
+        if (onGround && velocity.y <= 0)
+        {
+            velocity.y = -1;
+        }
+
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        if (Input.GetButtonDown("Dash"))
+        {
+            if (playerInteraction.DecreaseStamina(70))
+            {
+                isRegeniratingStamina = false;
+                StartCoroutine(Dash());
+            }
+
+
+        }
+
+        movement = transform.right * horizontal + transform.forward * vertical;
+        controller.Move((movement * playerSpeed * Time.deltaTime));
+        velocity.y += gravity * 2 * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
+
+        if (Input.GetButtonDown("Jump") && onGround == true)
+        {
+            if (playerInteraction.DecreaseStamina(60))
+            {
+                isRegeniratingStamina = false;
+                velocity.y += HighJump;
+            }
+
+        }
+    }
+
 
 }

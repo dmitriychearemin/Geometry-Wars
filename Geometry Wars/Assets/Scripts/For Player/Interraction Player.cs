@@ -2,25 +2,29 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class InterractionPlayer : MonoBehaviour
 {
 
     PlayersCharacteristics playersCharacteristics;
+    Transform weaponObject;
+    ForWeapons weaponParam;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         playersCharacteristics = GetComponent<PlayersCharacteristics>();
+        weaponObject = GameObject.FindWithTag("Weapon").transform;
+        weaponParam = weaponObject.GetComponent<ForWeapons>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
-        {
-            TakeDamage(50);
-        }
+        
     }
 
     public bool TakeDamage(float minus)
@@ -61,10 +65,8 @@ public class InterractionPlayer : MonoBehaviour
         if (playersCharacteristics.getCurStamina() > playersCharacteristics.getMaxStamina())
             {
                 playersCharacteristics.setCurStamina(playersCharacteristics.getMaxStamina());
-            }
-
-           
-           
+            }   
     }
+    
 
 }
