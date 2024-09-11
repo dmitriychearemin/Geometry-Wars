@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static System.TimeZoneInfo;
 
 public class ForEnemies : MonoBehaviour
 {
     [SerializeField] int curLvl = 1;
-    [SerializeField] float maxHP = 100;
+    [SerializeField] float maxHP = 300;
     [SerializeField] float Damage;
 
     Color defaultMaterialColor;
-    Color DamageMaterialColor =new Color (255,0,0);
-    Color curMaterialColor;
+    Color DamageMaterialColor =new Color (1.2f,0.8f,0.8f);
+    Renderer renderer;
 
-    float currentHP;
+    bool isBlink = false;
+    float transitionTime = 0.5f;
+    float lerpTime = 1.0f;
+
+    [SerializeField] float currentHP;
     
-
-
 
     bool CanTakeDamage = true;
     float MaxInvicibleTime = 3;
@@ -29,9 +32,9 @@ public class ForEnemies : MonoBehaviour
         Damage += (Damage / 100) * 5 * curLvl;
         currentHP = maxHP;
 
-
-        defaultMaterialColor = GetComponent<MeshRenderer>().material.color;
-        
+        renderer = GetComponent<MeshRenderer>();
+        defaultMaterialColor = renderer.material.color;
+        print(renderer.material.color);
     }
 
     // Update is called once per frame
@@ -41,6 +44,7 @@ public class ForEnemies : MonoBehaviour
         {
             InvicibleFrame += InvicibleFrame * Time.deltaTime;
         }
+
         if (InvicibleFrame >= MaxInvicibleTime)
         {
             InvicibleFrame = 1;
@@ -48,11 +52,11 @@ public class ForEnemies : MonoBehaviour
         }
 
 
+        BlinkTakeDamage();
+
         if (currentHP <=0) {
             DieEnemy();
         }
-
-        GetComponent<MeshRenderer>().material.color = defaultMaterialColor;
     }
 
 
@@ -69,9 +73,11 @@ public class ForEnemies : MonoBehaviour
                 {
                     InvicibleFrame *= 2;
                 }
-                BlinkTakeDamage();
+
+                isBlink = true; 
+                lerpTime = 0.0f;
+
                 CanTakeDamage = false;
-                print("collision" + " " + currentHP);
                 currentHP -= collision.gameObject.GetComponent<ForWeapons>().getDamageWeapon();
             }
             
@@ -101,8 +107,21 @@ public class ForEnemies : MonoBehaviour
 
     void BlinkTakeDamage()
     {
-        GetComponent<MeshRenderer>().material.color = DamageMaterialColor;
-        
+        if (isBlink)
+        {
+            lerpTime += Time.deltaTime / transitionTime;
+            renderer.material.color = Color.Lerp(defaultMaterialColor, DamageMaterialColor, lerpTime);
+
+            if (lerpTime >= 1.0f)
+            {
+                isBlink = false; 
+            }
+        }
+        else if (lerpTime > 0.0f)
+        {
+            lerpTime -= Time.deltaTime / transitionTime;
+            renderer.material.color = Color.Lerp(defaultMaterialColor, DamageMaterialColor, lerpTime);
+        }
     }
 
 }

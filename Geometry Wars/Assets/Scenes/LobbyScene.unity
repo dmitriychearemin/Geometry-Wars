@@ -760,6 +760,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd6fb2e5cf105e499bce47135cf7f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curLvl: 20
+  maxHP: 100
+  Damage: 0
+  currentHP: 0
 --- !u!1 &1171678784
 GameObject:
   m_ObjectHideFlags: 0
