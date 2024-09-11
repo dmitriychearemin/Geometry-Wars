@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor.TestTools.CodeCoverage;
 using UnityEngine;
 
 public class PlayersCharacteristics : MonoBehaviour
@@ -15,18 +16,23 @@ public class PlayersCharacteristics : MonoBehaviour
     float CurrentEXP = 0;
     float NeedExp;
 
-    float DamageBody = 0; //в процентах
+    float DamageBody = 1; //в процентах
     float Defence = 0; //в процентах
 
     float maxPotencialHitpoints = 300;
     float maxPotencialStamina = 300;
-    float maxPotencialDamageBody = 30; //в процентах
     float maxPotencialDefence = 40;
     int   maxPotencialLevel = 100;
 
     // Start is called before the first frame update
     void Start()
     {
+        DamageBody += 0.5f * Level;
+        HitPoints += 3 * Level;
+        Stamina += 3 * Level;
+
+
+
         curHP = HitPoints;
         curStamina = Stamina;
     }
