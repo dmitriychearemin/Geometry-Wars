@@ -12,6 +12,10 @@ public class InterractionPlayer : MonoBehaviour
     ForWeapons weaponParam;
     Animator animator;
 
+    bool CanTakeDamage = true;
+    float MaxInvicibleTime = 3;
+    float InvicibleFrame = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +28,15 @@ public class InterractionPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!CanTakeDamage && InvicibleFrame < MaxInvicibleTime)  // проверка на колчиство пройденных кадров неу€звимости
+        {
+            InvicibleFrame += InvicibleFrame * Time.deltaTime;
+        }
+        if (InvicibleFrame >= MaxInvicibleTime)
+        {
+            InvicibleFrame = 1;
+            CanTakeDamage = true;
+        }
     }
 
     public bool TakeDamage(float minus)
@@ -67,6 +79,15 @@ public class InterractionPlayer : MonoBehaviour
                 playersCharacteristics.setCurStamina(playersCharacteristics.getMaxStamina());
             }   
     }
-    
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.tag == "Enemy")
+        {
+            ForEnemies enemy = collision.gameObject.GetComponent<ForEnemies>();
+            TakeDamage(enemy.GetDamage());
+        }
+    }
 
 }

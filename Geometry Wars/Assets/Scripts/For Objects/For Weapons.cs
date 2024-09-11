@@ -48,6 +48,11 @@ public class ForWeapons : MonoBehaviour
         return isPlayAnimation;
     }
 
+    public bool isMeleeWeapons()
+    {
+        return isMeleeWeapon;
+    }
+
     public void Attack()
     {
         
