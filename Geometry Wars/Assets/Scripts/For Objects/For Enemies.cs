@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +9,9 @@ public class ForEnemies : MonoBehaviour
     [SerializeField] int curLvl = 1;
     [SerializeField] float maxHP = 300;
     [SerializeField] float Damage;
-
     [SerializeField] ParticleSystem bloodSplash;
+
+    float EnemySpeed;
 
     List<ParticleSystem> bloodSplashes = new List<ParticleSystem>();
 
@@ -28,6 +30,10 @@ public class ForEnemies : MonoBehaviour
     float MaxInvicibleTime = 3;
     float InvicibleFrame = 1;
 
+    GameObject player;
+    float Y;
+    [SerializeField] bool EnemyIsMelee = true;
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +44,20 @@ public class ForEnemies : MonoBehaviour
 
         renderer = GetComponent<MeshRenderer>();
         defaultMaterialColor = renderer.material.color;
-        print(renderer.material.color);
+        
+
+        player = GameObject.Find("Player");
+
+        if (EnemyIsMelee)
+        {
+            EnemySpeed = 3.1f;
+        }
+        else
+        {
+            EnemySpeed = 2.5f;
+        }
+
+        Y = transform.position.y;
     }
 
     // Update is called once per frame
@@ -60,8 +79,10 @@ public class ForEnemies : MonoBehaviour
             }
         }
 
-
         BlinkTakeDamage();
+
+        MoveToPlayer();
+        print(transform.position);
 
         if (currentHP <=0) {
             DieEnemy();
@@ -112,6 +133,18 @@ public class ForEnemies : MonoBehaviour
 
     void MoveToPlayer()
     {
+        if (Distance2dXZ(transform.position.x, transform.position.z, player.transform.position.x, player.transform.position.z) > 2)
+        {
+            //print(Distance2dXZ(transform.position.x, transform.position.z, player.transform.position.x, player.transform.position.z));
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, EnemySpeed * Time.deltaTime);
+            transform.position = new Vector3(transform.position.x, Y, transform.position.z);
+        }
+        
+        else if(Distance2dXZ(transform.position.x, transform.position.z, player.transform.position.x, player.transform.position.z)<= 1.8) {
+            //print(Distance2dXZ(transform.position.x, transform.position.z, player.transform.position.x, player.transform.position.z));
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, -EnemySpeed * Time.deltaTime);
+            transform.position = new Vector3(transform.position.x, Y, transform.position.z);
+        }
 
     }
 
@@ -132,13 +165,17 @@ public class ForEnemies : MonoBehaviour
             lerpTime -= Time.deltaTime / transitionTime;
             renderer.material.color = Color.Lerp(defaultMaterialColor, DamageMaterialColor, lerpTime);
         }
-
-      
-
     }
 
 
+    float Distance2dXZ(float x1,float z1, float x2, float z2)
+    {
+        float distance;
 
+        distance =(float)Math.Sqrt( ((x2-x1)*(x2-x1)) + ((z2-z1)*(z2-z1)) );
+        return distance;
+    }
+    
 
 
 
