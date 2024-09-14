@@ -765,6 +765,7 @@ MonoBehaviour:
   Damage: 0
   bloodSplash: {fileID: 2501592848033461283, guid: b16ca898718d10f4592147b4e5ac4bfd, type: 3}
   currentHP: 0
+  EnemyIsMelee: 1
 --- !u!1 &1171678784
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,6 +1207,10 @@ PrefabInstance:
     - target: {fileID: 8134236739823980010, guid: bbda54666c0d869479fa4f2c0ae4629c, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134236739823980010, guid: bbda54666c0d869479fa4f2c0ae4629c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

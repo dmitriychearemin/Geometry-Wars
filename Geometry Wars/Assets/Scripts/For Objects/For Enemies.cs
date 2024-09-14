@@ -33,7 +33,7 @@ public class ForEnemies : MonoBehaviour
     GameObject player;
     float Y;
     [SerializeField] bool EnemyIsMelee = true;
-
+    Quaternion defaultRotation;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +44,7 @@ public class ForEnemies : MonoBehaviour
 
         renderer = GetComponent<MeshRenderer>();
         defaultMaterialColor = renderer.material.color;
-        
+        defaultRotation = transform.rotation;
 
         player = GameObject.Find("Player");
 
@@ -145,7 +145,9 @@ public class ForEnemies : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, -EnemySpeed * Time.deltaTime);
             transform.position = new Vector3(transform.position.x, Y, transform.position.z);
         }
-
+        
+        transform.LookAt(player.transform);
+        //transform.rotation = Quaternion.Euler(0f, transform.rotation.y, transform.rotation.z);
     }
 
     void BlinkTakeDamage()
