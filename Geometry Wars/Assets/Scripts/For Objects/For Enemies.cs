@@ -9,6 +9,10 @@ public class ForEnemies : MonoBehaviour
     [SerializeField] float maxHP = 300;
     [SerializeField] float Damage;
 
+    [SerializeField] ParticleSystem bloodSplash;
+
+    List<ParticleSystem> bloodSplashes = new List<ParticleSystem>();
+
     Color defaultMaterialColor;
     Color DamageMaterialColor =new Color (1.2f,0.8f,0.8f);
     Renderer renderer;
@@ -49,6 +53,11 @@ public class ForEnemies : MonoBehaviour
         {
             InvicibleFrame = 1;
             CanTakeDamage = true;
+            foreach (var splashes in bloodSplashes)
+            {
+                if (splashes)
+                    Destroy(splashes.gameObject);
+            }
         }
 
 
@@ -64,9 +73,7 @@ public class ForEnemies : MonoBehaviour
     {
         if(collision.transform.tag == "Weapon")
         {
-            
             ForWeapons weapon = collision.transform.GetComponent<ForWeapons>();
-            
             if (weapon.canDamage() && CanTakeDamage)
             {
                 if (!weapon.isMeleeWeapons())
@@ -76,7 +83,10 @@ public class ForEnemies : MonoBehaviour
 
                 isBlink = true; 
                 lerpTime = 0.0f;
-
+                ContactPoint contactPoint = collision.contacts[0];
+                Quaternion rot = Quaternion.FromToRotation(Vector3.up, -contactPoint.normal);
+                ParticleSystem bloodsplash = Instantiate(bloodSplash, contactPoint.point, rot);
+                bloodSplashes.Add(bloodsplash); 
                 CanTakeDamage = false;
                 currentHP -= collision.gameObject.GetComponent<ForWeapons>().getDamageWeapon();
             }
@@ -109,7 +119,7 @@ public class ForEnemies : MonoBehaviour
     {
         if (isBlink)
         {
-            lerpTime += Time.deltaTime / transitionTime;
+            lerpTime += 2* Time.deltaTime / transitionTime;
             renderer.material.color = Color.Lerp(defaultMaterialColor, DamageMaterialColor, lerpTime);
 
             if (lerpTime >= 1.0f)
@@ -122,6 +132,14 @@ public class ForEnemies : MonoBehaviour
             lerpTime -= Time.deltaTime / transitionTime;
             renderer.material.color = Color.Lerp(defaultMaterialColor, DamageMaterialColor, lerpTime);
         }
+
+      
+
     }
+
+
+
+
+
 
 }
