@@ -145,9 +145,15 @@ public class ForEnemies : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, -EnemySpeed * Time.deltaTime);
             transform.position = new Vector3(transform.position.x, Y, transform.position.z);
         }
+
+        else
+        {
+            Attack();
+        }
+
+        Vector3 playerPos = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        transform.LookAt(playerPos);
         
-        transform.LookAt(player.transform);
-        //transform.rotation = Quaternion.Euler(0f, transform.rotation.y, transform.rotation.z);
     }
 
     void BlinkTakeDamage()
