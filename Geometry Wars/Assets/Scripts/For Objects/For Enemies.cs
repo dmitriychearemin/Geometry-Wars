@@ -35,6 +35,9 @@ public class ForEnemies : MonoBehaviour
     [SerializeField] bool EnemyIsMelee = true;
     Quaternion defaultRotation;
 
+    
+    bool isAttack = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,7 +85,7 @@ public class ForEnemies : MonoBehaviour
         BlinkTakeDamage();
 
         MoveToPlayer();
-        print(transform.position);
+        //print(transform.position);
 
         if (currentHP <=0) {
             DieEnemy();
@@ -128,6 +131,8 @@ public class ForEnemies : MonoBehaviour
 
     void Attack()
     {
+        isAttack  = true;
+
 
     }
 
