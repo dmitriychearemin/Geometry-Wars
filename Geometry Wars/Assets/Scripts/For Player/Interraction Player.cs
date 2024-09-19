@@ -84,7 +84,7 @@ public class InterractionPlayer : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if(collision.transform.tag == "Enemy" && CanTakeDamage == true)
         {
@@ -95,10 +95,14 @@ public class InterractionPlayer : MonoBehaviour
 
         else if(collision.transform.tag == "EnemyWeapon" && CanTakeDamage == true)
         {
-            CanTakeDamage = false;
-            print("weapon is touch");
-            ForEnemies enemy = collision.gameObject.GetComponentInParent<ForEnemies>();
-            TakeDamage(enemy.GetDamage());
+            if (collision.transform.GetComponent<ForEnemyWeapon>().canDamage())
+            {
+                CanTakeDamage = false;
+                ForEnemies enemy = collision.gameObject.GetComponentInParent<ForEnemies>();
+                TakeDamage(enemy.GetDamage());
+            }
+
+            
         }
     }
 
