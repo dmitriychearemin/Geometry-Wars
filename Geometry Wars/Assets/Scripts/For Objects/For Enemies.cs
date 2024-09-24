@@ -6,25 +6,27 @@ using static System.TimeZoneInfo;
 
 public class ForEnemies : MonoBehaviour
 {
+    // Характеристики 
     [SerializeField] int curLvl = 1;
     [SerializeField] float maxHP = 300;
     [SerializeField] float Damage;
     [SerializeField] ParticleSystem bloodSplash;
-
     float EnemySpeed;
+    [SerializeField] float currentHP;
+
+    ForEnemyWeapon forEnemyWeapon;
 
     List<ParticleSystem> bloodSplashes = new List<ParticleSystem>();
 
+
+    /// Перекрашивание объекта в красный при получении урона
     Color defaultMaterialColor;
     Color DamageMaterialColor =new Color (1.2f,0.8f,0.8f);
-    Renderer renderer;
-
+    Renderer renderer; 
     bool isBlink = false;
     float transitionTime = 0.5f;
     float lerpTime = 1.0f;
-
-    [SerializeField] float currentHP;
-    
+    /// </summary>
 
     bool CanTakeDamage = true;
     float MaxInvicibleTime = 3;
@@ -33,18 +35,23 @@ public class ForEnemies : MonoBehaviour
     GameObject player;
     float Y;
     [SerializeField] bool EnemyIsMelee = true;
-    Quaternion defaultRotation;
+
+    Transform weaponEnemy;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        weaponEnemy = transform.Find("EnemyWeapon");
+        forEnemyWeapon = weaponEnemy.GetComponent<ForEnemyWeapon>(); ;
+
         maxHP += (maxHP / 100) * 10 * curLvl;
         Damage += (Damage / 100) * 5 * curLvl;
         currentHP = maxHP;
 
         renderer = GetComponent<MeshRenderer>();
         defaultMaterialColor = renderer.material.color;
-        defaultRotation = transform.rotation;
+        
 
         player = GameObject.Find("Player");
 
@@ -82,7 +89,7 @@ public class ForEnemies : MonoBehaviour
         BlinkTakeDamage();
 
         MoveToPlayer();
-        print(transform.position);
+        //print(transform.position);
 
         if (currentHP <=0) {
             DieEnemy();
@@ -126,14 +133,9 @@ public class ForEnemies : MonoBehaviour
         return Damage;
     }
 
-    void Attack()
-    {
-
-    }
-
     void MoveToPlayer()
     {
-        if (Distance2dXZ(transform.position.x, transform.position.z, player.transform.position.x, player.transform.position.z) > 2)
+        if (Distance2dXZ(transform.position.x, transform.position.z, player.transform.position.x, player.transform.position.z) > 2.4)
         {
             //print(Distance2dXZ(transform.position.x, transform.position.z, player.transform.position.x, player.transform.position.z));
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, EnemySpeed * Time.deltaTime);
@@ -148,7 +150,7 @@ public class ForEnemies : MonoBehaviour
 
         else
         {
-            Attack();
+            forEnemyWeapon.Attack();
         }
 
         Vector3 playerPos = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);

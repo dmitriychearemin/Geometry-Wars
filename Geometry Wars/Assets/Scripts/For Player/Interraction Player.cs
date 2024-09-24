@@ -41,12 +41,15 @@ public class InterractionPlayer : MonoBehaviour
 
     public bool TakeDamage(float minus)
     {
-        if (playersCharacteristics.getCurHP()>= minus)
+        playersCharacteristics.setCurHp(playersCharacteristics.getCurHP() - minus);
+        if(playersCharacteristics.getCurHP() <= 0)
         {
-            playersCharacteristics.setCurHp(playersCharacteristics.getCurHP() - minus);
-            return true;
+            playersCharacteristics.setCurHp(0);
+            DyingPlayer();
         }
-        return false;
+        return true;
+        
+        
         
     }
 
@@ -81,13 +84,32 @@ public class InterractionPlayer : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        if(collision.transform.tag == "Enemy")
+        if(collision.transform.tag == "Enemy" && CanTakeDamage == true)
         {
+            CanTakeDamage = false;
             ForEnemies enemy = collision.gameObject.GetComponent<ForEnemies>();
             TakeDamage(enemy.GetDamage());
         }
+
+        else if(collision.transform.tag == "EnemyWeapon" && CanTakeDamage == true)
+        {
+            if (collision.transform.GetComponent<ForEnemyWeapon>().canDamage())
+            {
+                CanTakeDamage = false;
+                ForEnemies enemy = collision.gameObject.GetComponentInParent<ForEnemies>();
+                TakeDamage(enemy.GetDamage());
+            }
+
+            
+        }
+    }
+
+
+    void DyingPlayer()
+    {
+        print("Die");
     }
 
 }
