@@ -37,7 +37,8 @@ public class ForEnemies : MonoBehaviour
     [SerializeField] bool EnemyIsMelee = true;
 
     Transform weaponEnemy;
-    
+
+    UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 
     // Start is called before the first frame update
     void Start()
