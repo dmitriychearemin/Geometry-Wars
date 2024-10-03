@@ -93,21 +93,24 @@ public class InterractionPlayer : MonoBehaviour
             TakeDamage(enemy.GetDamage());
         }
 
-        else if(collision.transform.tag == "EnemyWeapon" && CanTakeDamage == true)
+       
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "EnemyWeapon" && CanTakeDamage == true)
         {
-            if (collision.transform.GetComponent<ForEnemyWeapon>().canDamage())
+            if (other.transform.GetComponent<ForEnemyWeapon>().canDamage())
             {
                 CanTakeDamage = false;
-                ForEnemies enemy = collision.gameObject.GetComponentInParent<ForEnemies>();
+                ForEnemies enemy = other.gameObject.GetComponentInParent<ForEnemies>();
                 TakeDamage(enemy.GetDamage());
-            }
 
-            
+            }
         }
     }
 
-
-    void DyingPlayer()
+        void DyingPlayer()
     {
         print("Die");
     }

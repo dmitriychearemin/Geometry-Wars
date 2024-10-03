@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using static System.TimeZoneInfo;
 
 public class ForEnemies : MonoBehaviour
@@ -38,7 +39,7 @@ public class ForEnemies : MonoBehaviour
 
     Transform weaponEnemy;
 
-    UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+    NavMeshAgent agent;
 
     // Start is called before the first frame update
     void Start()
@@ -52,8 +53,8 @@ public class ForEnemies : MonoBehaviour
 
         renderer = GetComponent<MeshRenderer>();
         defaultMaterialColor = renderer.material.color;
-        
 
+        agent = GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player");
 
         if (EnemyIsMelee)
@@ -136,18 +137,12 @@ public class ForEnemies : MonoBehaviour
 
     void MoveToPlayer()
     {
-        if (Distance2dXZ(transform.position.x, transform.position.z, player.transform.position.x, player.transform.position.z) > 2.4)
+        if (Distance2dXZ(transform.position.x, transform.position.z, player.transform.position.x, player.transform.position.z) > 3)
         {
-            //print(Distance2dXZ(transform.position.x, transform.position.z, player.transform.position.x, player.transform.position.z));
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, EnemySpeed * Time.deltaTime);
-            transform.position = new Vector3(transform.position.x, Y, transform.position.z);
-        }
-        
-        else if(Distance2dXZ(transform.position.x, transform.position.z, player.transform.position.x, player.transform.position.z)<= 1.8) {
-            //print(Distance2dXZ(transform.position.x, transform.position.z, player.transform.position.x, player.transform.position.z));
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, -EnemySpeed * Time.deltaTime);
-            transform.position = new Vector3(transform.position.x, Y, transform.position.z);
-        }
+
+            agent.destination = player.transform.position;
+            agent.stoppingDistance = 3;
+        }   
 
         else
         {
