@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: f42f682c60247164280b43913da5ac73, type: 2}
 --- !u!850595691 &15302552
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -265,7 +265,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 1
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: -5
   m_TargetDisplay: 0
@@ -349,73 +349,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5749320805346008755, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
-      propertyPath: m_TagString
-      value: Weapon
-      objectReference: {fileID: 0}
-    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
-      propertyPath: dashSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
-      propertyPath: playerSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
-      propertyPath: dashCurve.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
-      propertyPath: dashCurve.m_Curve.Array.data[0].time
-      value: 0.050000507
-      objectReference: {fileID: 0}
-    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
-      propertyPath: dashCurve.m_Curve.Array.data[1].time
-      value: 0.9583435
-      objectReference: {fileID: 0}
-    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
-      propertyPath: dashCurve.m_Curve.Array.data[0].value
-      value: 0.9622503
-      objectReference: {fileID: 0}
-    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
-      propertyPath: dashCurve.m_Curve.Array.data[1].value
-      value: 0.03302002
-      objectReference: {fileID: 0}
-    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
-      propertyPath: dashCurve.m_Curve.Array.data[0].inSlope
-      value: -1.3583333
-      objectReference: {fileID: 0}
-    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
-      propertyPath: dashCurve.m_Curve.Array.data[1].inSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
-      propertyPath: dashCurve.m_Curve.Array.data[0].outSlope
-      value: -1.3583333
-      objectReference: {fileID: 0}
-    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
-      propertyPath: dashCurve.m_Curve.Array.data[1].outSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
-      propertyPath: dashCurve.m_Curve.Array.data[0].outWeight
-      value: 0.08968461
-      objectReference: {fileID: 0}
-    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
-      propertyPath: dashCurve.m_Curve.Array.data[0].tangentMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7641042347607295996, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
-      propertyPath: dashCurve.m_Curve.Array.data[1].tangentMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7755268958739243165, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7755268958739243165, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: Player1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -427,6 +363,55 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 2227567309662415624, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
   m_PrefabInstance: {fileID: 409206193}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &654219595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 654219597}
+  - component: {fileID: 654219596}
+  m_Layer: 0
+  m_Name: ControlSurvivalMode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &654219596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654219595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81fde2f37886aa348aa7341945e28925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TypesTerrains:
+  - {fileID: 6040735844596066562}
+  EnemyList:
+  - {fileID: 4828879202233298490, guid: 30f1af7ff763a4a4c9a9deeffccea422, type: 3}
+  Player: {fileID: 7755268958739243165, guid: e2301f6e8a7a74a4c8c0fea4b57115d1, type: 3}
+--- !u!4 &654219597
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654219595}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.6029136, y: -5.951764, z: -3.3553624}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &744156944
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +718,7 @@ Transform:
   m_GameObject: {fileID: 1532344871}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -41635, y: -34727, z: -11036}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -878,6 +863,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain1
       objectReference: {fileID: 0}
+    - target: {fileID: 4907190057378170654, guid: abb0f6d88e5ddf9448f8c3d191e69514, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7817677457419240085, guid: abb0f6d88e5ddf9448f8c3d191e69514, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -923,6 +912,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abb0f6d88e5ddf9448f8c3d191e69514, type: 3}
+--- !u!1 &6040735844596066562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4907190057378170654, guid: abb0f6d88e5ddf9448f8c3d191e69514, type: 3}
+  m_PrefabInstance: {fileID: 6040735844596066561}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -932,3 +926,4 @@ SceneRoots:
   - {fileID: 744156947}
   - {fileID: 353151129}
   - {fileID: 6040735844596066561}
+  - {fileID: 654219597}

@@ -14,6 +14,7 @@ public class ForEnemies : MonoBehaviour
     [SerializeField] ParticleSystem bloodSplash;
     float EnemySpeed;
     [SerializeField] float currentHP;
+    [SerializeField] float gravity = -100f;
 
     ForEnemyWeapon forEnemyWeapon;
 
@@ -41,12 +42,15 @@ public class ForEnemies : MonoBehaviour
 
     NavMeshAgent agent;
 
-    // Start is called before the first frame update
+    private CharacterController controller;
+    Vector3 velocity;
+    
+
     void Start()
     {
         weaponEnemy = transform.Find("EnemyWeapon");
         forEnemyWeapon = weaponEnemy.GetComponent<ForEnemyWeapon>(); ;
-
+        controller = GetComponent<CharacterController>();
         maxHP += (maxHP / 100) * 10 * curLvl;
         Damage += (Damage / 100) * 5 * curLvl;
         currentHP = maxHP;
@@ -56,7 +60,7 @@ public class ForEnemies : MonoBehaviour
 
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player");
-
+        print(player);
         if (EnemyIsMelee)
         {
             EnemySpeed = 3.1f;
@@ -89,6 +93,9 @@ public class ForEnemies : MonoBehaviour
         }
 
         BlinkTakeDamage();
+
+        velocity.y += gravity * 2 * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
 
         MoveToPlayer();
         //print(transform.position);

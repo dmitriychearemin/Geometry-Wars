@@ -26,11 +26,12 @@ public class PlayerContolPC : MonoBehaviour
     Transform checkGround;
     [SerializeField] float groundDistance = 0.4f;
     [SerializeField] LayerMask groundMask;
-
+    
 
 
     void Start()
     {
+
         playerInteraction = GetComponent<InterractionPlayer>();
         controller = GetComponent<CharacterController>(); 
         checkGround = GameObject.Find("CheckGround").transform;

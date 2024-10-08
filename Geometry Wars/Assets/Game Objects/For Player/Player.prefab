@@ -333,7 +333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4552327878892013212
 Transform:
   m_ObjectHideFlags: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79255f32257fe64991feaaf8e443044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 3
+  playerSpeed: 5
   HighJump: 30
   gravity: -100
   dashSpeed: 5
@@ -400,19 +400,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.018722534
-      value: 0.9989357
-      inSlope: -2.5984242
-      outSlope: -2.5984242
+      time: 0.050000507
+      value: 0.9622503
+      inSlope: -1.3583333
+      outSlope: -1.3583333
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.0431939
+      outWeight: 0.08968461
     - serializedVersion: 3
-      time: 0.5311967
-      value: -0.0008865502
-      inSlope: -0.21795636
-      outSlope: -0.21795636
+      time: 0.9583435
+      value: 0.03302002
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.09554955
