@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 276904439392070147}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eyes
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 1554064994575839014}
   - component: {fileID: 4583489313894822306}
   - component: {fileID: 4529897921346486282}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 5614176614495329905}
   - component: {fileID: 7518136363901618296}
   - component: {fileID: -7727316801956856193}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ppp
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -267,6 +267,7 @@ MonoBehaviour:
   Damage: 20
   bloodSplash: {fileID: 2501592848033461283, guid: b16ca898718d10f4592147b4e5ac4bfd, type: 3}
   currentHP: 0
+  gravity: -100
   EnemyIsMelee: 1
 --- !u!195 &7518136363901618296
 NavMeshAgent:
@@ -328,7 +329,7 @@ GameObject:
   - component: {fileID: 2842688721942148149}
   - component: {fileID: 4470232133952559423}
   - component: {fileID: 4223209254913670731}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +439,7 @@ GameObject:
   - component: {fileID: 4868342568714215433}
   - component: {fileID: 3700262047122663258}
   - component: {fileID: 2537724202888736048}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyWeapon
   m_TagString: EnemyWeapon
   m_Icon: {fileID: 0}

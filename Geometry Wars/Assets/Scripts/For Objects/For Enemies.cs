@@ -147,7 +147,7 @@ public class ForEnemies : MonoBehaviour
         if (Distance2dXZ(transform.position.x, transform.position.z, player.transform.position.x, player.transform.position.z) > 3)
         {
 
-            agent.destination = player.transform.position;
+            agent.SetDestination(player.transform.position); 
             agent.stoppingDistance = 3;
         }   
 
