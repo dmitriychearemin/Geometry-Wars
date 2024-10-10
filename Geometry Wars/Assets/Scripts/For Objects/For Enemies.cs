@@ -44,19 +44,21 @@ public class ForEnemies : MonoBehaviour
 
     private CharacterController controller;
     Vector3 velocity;
-    
+    private float starttime;
 
     void Start()
     {
         weaponEnemy = transform.Find("EnemyWeapon");
         forEnemyWeapon = weaponEnemy.GetComponent<ForEnemyWeapon>(); ;
-        controller = GetComponent<CharacterController>();
+        //controller = GetComponent<CharacterController>();
         maxHP += (maxHP / 100) * 10 * curLvl;
         Damage += (Damage / 100) * 5 * curLvl;
         currentHP = maxHP;
 
         renderer = GetComponent<MeshRenderer>();
         defaultMaterialColor = renderer.material.color;
+
+        starttime = Time.time;
 
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player");
@@ -95,9 +97,13 @@ public class ForEnemies : MonoBehaviour
         BlinkTakeDamage();
 
         velocity.y += gravity * 2 * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        //controller.Move(velocity * Time.deltaTime);
 
-        MoveToPlayer();
+        if(Time.time - starttime >= 1)
+        {
+            MoveToPlayer();
+        }
+        
         //print(transform.position);
 
         if (currentHP <=0) {
@@ -131,7 +137,6 @@ public class ForEnemies : MonoBehaviour
         }
     }
 
-
     void DieEnemy()
     {
         DestroyObject(gameObject);
@@ -148,6 +153,7 @@ public class ForEnemies : MonoBehaviour
         {
 
             agent.SetDestination(player.transform.position); 
+            //agent.destination = player.transform.position;
             agent.stoppingDistance = 3;
         }   
 
