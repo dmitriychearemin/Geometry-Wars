@@ -50,7 +50,7 @@ public class ForEnemies : MonoBehaviour
     {
         weaponEnemy = transform.Find("EnemyWeapon");
         forEnemyWeapon = weaponEnemy.GetComponent<ForEnemyWeapon>(); ;
-        //controller = GetComponent<CharacterController>();
+        
         maxHP += (maxHP / 100) * 10 * curLvl;
         Damage += (Damage / 100) * 5 * curLvl;
         currentHP = maxHP;
@@ -62,7 +62,7 @@ public class ForEnemies : MonoBehaviour
 
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player");
-        print(player);
+        
         if (EnemyIsMelee)
         {
             EnemySpeed = 3.1f;

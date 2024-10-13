@@ -14,15 +14,15 @@ public class ControlSurvivalMode: MonoBehaviour
         int rand = Random.Range(0,TypesTerrains.Count);
         location = Instantiate(TypesTerrains[rand]);
         location.SetActive(true);
-        print("Terrain create");
+      
         playerspawner = location.transform.Find("PlayerSpawn").gameObject;
         var player = Instantiate(Player, playerspawner.transform);
         player.SetActive(true);
         player.name = Player.name;
-        print("Player create");
+      
         enemyspawner = location.transform.Find("EnemySpawners").gameObject;
         SpawnEnemy();
-        print("Enemy create");
+       
         
     }
 

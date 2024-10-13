@@ -13,7 +13,7 @@ public class PlayerContolPC : MonoBehaviour
     [SerializeField] float dashTime= 0.3f;
     [SerializeField] AnimationCurve dashCurve;
     private CharacterController controller;
-   
+  
     InterractionPlayer playerInteraction;
 
     private bool onGround = true;
@@ -35,6 +35,7 @@ public class PlayerContolPC : MonoBehaviour
         playerInteraction = GetComponent<InterractionPlayer>();
         controller = GetComponent<CharacterController>(); 
         checkGround = GameObject.Find("CheckGround").transform;
+        
     }
 
     void Update()
@@ -103,6 +104,4 @@ public class PlayerContolPC : MonoBehaviour
 
         }
     }
-
-
 }
